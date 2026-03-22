@@ -13,8 +13,9 @@ global with sharing class TaxaDePresencaBatch implements Database.Batchable<SObj
 
         for (Evento__c evento : events) {
             if (evento.Capacidade__c != null) {
-                Decimal taxaPresenca = (evento.Inscricoes__r.size() / evento.Capacidade__c) * 100;
-                evento.Taxa_de_Presenca__c = taxaPresenca.setScale(2);
+                Decimal taxaPresenca = (evento.Inscricoes__r.size() / evento.Capacidade__c) * 100;//evento.Inscricoes__r.size()conta quantos compareceram , evento.Capacidade__c é a capacidade total do evento
+                evento.Taxa_de_Presenca__c = taxaPresenca.setScale(2);// Define a taxa de presença com 2 casas decimais
+            
             }
         }
 
@@ -25,3 +26,6 @@ global with sharing class TaxaDePresencaBatch implements Database.Batchable<SObj
         System.debug('Batch de cálculo da taxa de presença concluído.');
     }
 }
+
+//TaxaDePresencaBatch batch = new TaxaDePresencaBatch();
+//Database.executeBatch(batch, 200);
