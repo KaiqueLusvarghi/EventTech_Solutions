@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Próximos Eventos" icon-name="standard:event">
+
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            
+            <!-- cabeçalho -->
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th>Nome do Evento</th>
+                    <th>Data</th>
+                    <th>Região</th>
+                    <th>Vagas Restantes</th>
+                </tr>
+            </thead>
+
+            <!-- linhas -->
+            <tbody>
+                <template for:each={eventosFiltrados} for:item="evento">
+                    <tr key={evento.Id}>
+                        <td>{evento.Name}</td>
+                        <td>{evento.Data_do_Evento__c}</td>
+                        <td>{evento.Regiao__c}</td>
+                        <td>{evento.vagasRestantes}</td>
+                    </tr>
+                </template>
+            </tbody>
+
+        </table>
+
+    </lightning-card>
+</template>
